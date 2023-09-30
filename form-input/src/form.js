@@ -1,4 +1,5 @@
-
+import React from 'react';
+import ReactDOM from 'react-dom/client';
 let options = []
 const onFromSubmit = (e) => {
     e.perventDefault();
@@ -6,13 +7,25 @@ const onFromSubmit = (e) => {
     if (option) {
         options.push(option)
     }
-
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(
+        <Template />
+    );
 }
-const Template = () => {
+const head = () => {
+    console.log(options)
+    if (options.length > 0) {
+        return (<h1>All the in</h1>)
+    }
+}
 
+const Template = () => {
     return (
         <div>
-            <h1>Hi</h1>
+            {
+                head()
+            }
+
             <form onSubmit={onFromSubmit}>
                 <input type="text" name="option" />
                 <button>Submit</button>
